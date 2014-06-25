@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>mijikai</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"/>
+    <script src="/static/lib/angular/angular-resource.js"></script>
+
+    <script src="/static/js/app.js"></script>
+
+    <script src="/static/lib/jquery/jquery.min.js"></script>
+    <script src="/static/lib/bootstrap/bootstrap.min.js"></script>
+
+    <stylesheet src="/static/lib/bootstrap/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/url_short.css">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+</head>
+<body ng-app="UrlShortener" ng-controller="ShortenController">
+    <div class="wrap">
+        <div class="logo">
+            <h1>mijikai</h1>
+            <h2>A high-performance URL shortener backed by redis</h2>
+        </div>
+        <div class="form">
+            <form name="form" novalidate>
+                <div>
+                    <div class="input-grp">
+                        <input
+                            type="url"
+                            placeholder="Enter URL to shorten"
+                            ng-model="url_to_shorten"
+                            autofocus="true"
+                            ng-required="true"
+                            name="url"
+                            watch-url
+                            ng-change="update_length()"
+                            class="url_to_shorten long-field"/>
+                        <input
+                            type="submit"
+                            value="Shorten"
+                            ng-disabled="form.$invalid"
+                            ng-click="shorten_url(url_to_shorten)"/>
+                    </div>
+                </div>
+            </form>
+            <p ng-show="form.$invalid &amp;&amp; form.url.$dirty &amp;&amp; valid_input_length" class="error-block">Your URL must start with "http://"</p>
+        </div>
+        <div ng-show="shortenerror" class="error-block">
+            <p>{{shortenerror}}</p>
+        </div>
+        <div class="result" ng-show="result.short_url">
+            <div class="longurl" ng-show="result.long_url">
+                <p>{{result.long_url}}</p>
+            </div>
+            <div class="shorturl" ng-show="result.short_url">
+                <p>{{result.short_url}}</p>
+            </div>
+        </div>
+        <div class="about">
+            <p>
+            <i>mijikai</i> is a high-performance URL shortener backed by redis
+            <a href="https://github.com/neeraj2608/redis-mijikai-url">Open source project</a> by <a href="https://www.github.com/neeraj2608">Neeraj Rao</a>.
+            <p>This site built with <a href="http://angularjs.org">AngularJS</a> and <a href="http://flask.pocoo.org">Flask</a></p>
+            </p>
+        </div>
+    </div> <!-- end of wrap -->
+</body>
+</html>
