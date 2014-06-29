@@ -34,6 +34,22 @@ angular
             function ($scope, $http, windowAlert) {
                 $scope.url_to_summarize = "";
                 $scope.result = {};
+                ZeroClipboard.config({swfPath: "/static/swf/ZeroClipboard.swf"});
+                $scope.copy_button = $("button#copy_short_url");
+                $scope.zero_client = new ZeroClipboard($scope.copy_button);
+
+                $scope.zero_client.on('ready', function(event) {
+                    $scope.zero_client.on('copy', function(event) {
+                        event.clipboardData.setData('text/plain', $scope.result.short_url);
+                    })
+                    ;
+
+                    $scope.zero_client.on( 'aftercopy', function(event) {
+                        $scope.copy_button.text('Copied!');
+                    })
+                    ;
+                })
+                ;
 
                 $scope.shorten_url = function(url_to_summarize){
                     $http
@@ -49,6 +65,10 @@ angular
                                 $scope.shortenerror = 'Something went wrong. Could not create result for: '+url_to_summarize;
                             }
                         })
+                }
+                ;
+
+                $scope.copy_short_url = function(url_to_summarize){
                 }
                 ;
             }

@@ -6,11 +6,11 @@ body {
     font-family: 'PT Serif', serif;
     height: 100%;
     text-align: center;
-    color: #fff;
+    color: #837C7C;
 }
 
 a {
-    color: #eee;
+    color: #EE6E6E;
     padding: 3px 1px;
     font-weight:bold;
 }
@@ -21,15 +21,16 @@ a {
 
 h1 {
     font-family: 'Arvo', 'Open sans', Helvetica, Arial, sans-serif;
-    font-size: 4em;
+    font-size: 3em;
     font-style: normal;
+    color: #EE6E6E;
     margin: 0px;
     margin-bottom: 2%;
 }
 
 h2 {
     font-family: 'PT Serif', serif;
-    font-size: 1.5em;
+    font-size: 20px;
     font-style: normal;
     margin: 0px;
     margin-bottom: 2%;
@@ -38,8 +39,6 @@ h2 {
 .wrap {
     width: 100%;
     height: 100%;
-    background: -webkit-radial-gradient(#FF2D2D, #690305);
-    background: radial-gradient(#FF2D2D, #690305);
     overflow: scroll;
     position: absolute;
     margin: 0px;
@@ -61,33 +60,25 @@ div.result {
     -webkit-box-sizing: border-box;
     width: 50%;
     border: 0;
-    color: #fff;
-    background: rgba(236, 143, 70, 0.4);
-    padding: 10px;
+    padding-top: 10px;
     outline: 0px;
-    box-shadow: 1px 0px 6px rgba(0,0,0,.2) inset,       /* left border */
-                -1px 0px 6px rgba(0,0,0,.2) inset,      /* right border */
-                inset 0 -1px 0px rgba(255,255,255,0.3); /* bottom border */
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     margin-left: 25%;
 }
 
-div.longurl {
+/*div.longurl {
     text-shadow: 0 1px 5px #915454;
     font-family: 'Droid Sans', 'Open sans', Helvetica, Arial, sans-serif;
     font-weight: bold;
     font-size: 18px;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.16);
     padding:0px;
-}
+}*/
 
 div.shorturl {
-    text-shadow: 0 1px 5px #915454;
     font-family: 'Droid Sans', 'Open sans', Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.16);
+    font-size: 16px;
     padding:0px;
 }
 
@@ -98,7 +89,7 @@ div.about {
     bottom: 0px;
 }
 
-input[type="url"] {
+.url {
     font-size: 16px;
     letter-spacing: 1px;
     -moz-box-sizing: border-box;
@@ -107,47 +98,47 @@ input[type="url"] {
     height: 40px;
     float: left;
     border: 0;
-    color: #fff;
-    background: rgba(0,0,0,.1);
+    color: #9B9494;
+    background: rgba(160, 160, 160, 0.1);
     padding: 10px;
     outline: 0px;
     box-shadow: 0 2px 4px rgba(0,0,0,.2) inset, inset 0 -1px 0px rgba(255,255,255,0.3);
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
+    text-align: left;
 }
 
-input[type="submit"] {
+.submit {
     height: 40px;
     width: 20%;
     cursor: pointer;
     margin: 0;
     border: 0;
     padding: 6px 12px;
-    text-shadow: 0 1px 5px #915454;
     font-size: 16px;
     -webkit-transition: .1s;
     transition: .1s;
-    background-color: #FCBC36;
-    color: #EEE;
+    background-color: #EB5050;
+    color: #FFFFFF;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     font-weight: bold;
     font-family: 'Droid Sans', sans-serif;
-    box-shadow: inset -2px 0px 5px rgba(168, 38, 11, 0.89), /* right border */
-                inset 3px 0px 2px rgba(190, 71, 14, 0.5),   /* left border */
-                inset 0px -2px 5px rgba(162, 37, 10, 0.56), /* bottom border */
-                inset 0px 4px 7px rgba(236, 211, 163, 0.5)  /* top border */
 }
 
-input[type="submit"]:hover {
-    background-color: #FFA026;
+button#copy_short_url{
+    background-color: #50C0EB;
+}
+
+.submit:hover {
+    background-color: #F65C5C;
     border-color: #00284f;
     color: #fff;
     opacity: 1.2;
     filter: alpha(opacity=120);
 }
 
-input[type="submit"]:disabled {
+.submit:disabled {
     cursor: not-allowed;
     pointer-events: none;
     opacity: .75;
@@ -157,7 +148,7 @@ input[type="submit"]:disabled {
 .error-block {
     width: 50%;
     margin: 0px auto;
-    color: #C9BDBD;
+    color: #CA2E2E;
     text-align: center;
     line-height: 2.5;
     overflow: hidden;

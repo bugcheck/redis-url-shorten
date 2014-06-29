@@ -29,7 +29,7 @@ def lengthen_url(short_url):
                 'short_url': short_url,
                 'visits': visits
             })
-    else:
+    else: # unknown short url
         return jsonify({
                 'success': False
             })
