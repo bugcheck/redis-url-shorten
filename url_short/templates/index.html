@@ -54,19 +54,16 @@
         <div ng-show="shortenerror" class="error-block">
             <p>{{shortenerror}}</p>
         </div>
-        <div class="result" ng-show="result.short_url">
-            <!--<div class="longurl" ng-show="result.long_url">
-                <p>{{result.long_url}}</p>
-            </div>-->
+        <div class="result" ng-hide="shortenerror" ng-show="result.short_url">
             <div class="shorturl" ng-show="result.short_url">
                 <span id="short_url" class="url">
                     {{result.short_url}}
                 </span>
-                <button
-                    class="submit"
-                    id="copy_short_url"
-                    title="Copy short URL"
-                    ng-click="copy_short_url()">Copy</button>
+                <button class="submit"
+                        id="copy_short_url"
+                        title="Copy short URL">
+                    Copy
+                </button>
             </div>
         </div>
         <div class="about">

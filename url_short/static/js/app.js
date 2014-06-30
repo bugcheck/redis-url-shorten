@@ -38,13 +38,13 @@ angular
                 $scope.copy_button = $("button#copy_short_url");
                 $scope.zero_client = new ZeroClipboard($scope.copy_button);
 
-                $scope.zero_client.on('ready', function(event) {
-                    $scope.zero_client.on('copy', function(event) {
+                $scope.zero_client.on('ready', function(event){
+                    $scope.zero_client.on('copy', function(event){
                         event.clipboardData.setData('text/plain', $scope.result.short_url);
                     })
                     ;
 
-                    $scope.zero_client.on( 'aftercopy', function(event) {
+                    $scope.zero_client.on( 'aftercopy', function(event){
                         $scope.copy_button.text('Copied!');
                     })
                     ;
@@ -56,6 +56,7 @@ angular
                         .get('/shorten?url='+encodeURIComponent(url_to_summarize))
                         .success(function(data, status, headers, config) {
                             if (data.success) {
+                                $scope.copy_button.text('Copy');
                                 $scope.result.long_url = data.long_url;
                                 $scope.result.short_url = data.short_url;
                                 $scope.form.$setPristine();
@@ -68,9 +69,6 @@ angular
                 }
                 ;
 
-                $scope.copy_short_url = function(url_to_summarize){
-                }
-                ;
             }
     ])
 ;
