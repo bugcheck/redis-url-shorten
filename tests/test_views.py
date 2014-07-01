@@ -37,6 +37,24 @@ class UrlShortTestCase(TestCase):
         self.assertEqual(data['long_url'], long_url)
         self.assertEqual(int(data['visits']), 0)
 
+    def test_shorten_short_url(self):
+        response = self.app.get('/shorten?url=%s' % 'http://localhost/test')
+        data = json.loads(response.data)
+        self.assertFalse(data['success'])
+        self.assertEqual(data['error'], app.config['MSG_ALREADY_SHORT_URL'])
+
+    def test_invalid_details_request(self):
+        response = self.app.get('/detail?url=test') # request param is 'id', not 'url'
+        data = json.loads(response.data)
+        self.assertFalse(data['success'])
+        self.assertEqual(data['error'], app.config['MSG_ID_REQ_PARAM_MISSING'])
+
+    def test_details_nonexistent_short_url(self):
+        response = self.app.get('/detail?id=test')
+        data = json.loads(response.data)
+        self.assertFalse(data['success'])
+        self.assertEqual(data['error'], app.config['MSG_UNKNOWN_SHORT_URL'])
+
     def test_details_existing_short_url(self):
         long_url = 'test'
         response = self.app.get('/shorten?url=%s' % long_url)
