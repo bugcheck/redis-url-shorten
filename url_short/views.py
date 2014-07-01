@@ -7,7 +7,7 @@ from url_short import app
 import redis
 from random import randint
 
-r = redis.from_url(os.getenv('REDISTOGO_URL', 'redis://localhost:6379'))
+r = redis.from_url(app.config['REDIS_URL'])
 
 valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 long_url_field = 'short_url'
