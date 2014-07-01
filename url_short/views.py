@@ -16,7 +16,7 @@ visits_field = 'visits'
 # let angular do the routing
 @app.route('/')
 def basic_pages(**kwargs):
-    return make_response(open('url_short/templates/index.html').read()) # TODO: change to send_file
+    return send_file('templates/index.html')
 
 @app.route("/loaderio-02d26f053f6e8ac2e2313a6c1d6c706f.txt", methods = ['GET'])
 def loaderio_verify():
@@ -29,7 +29,7 @@ def redirect_to_long_url(short_id):
         r.hincrby(short_id, visits_field, 1) # increment the number of visits to this url
         return redirect(long_url)
     else: # unknown short url
-        return render_template('unknown.html')
+        return send_file('templates/unknown.html')
 
 @app.route("/detail", methods = ['GET'])
 def detail_short_url():
@@ -94,7 +94,7 @@ def shorten_url():
                 'visits': 0
                 })
     else: # useful if /shorten is called directly without a url arg
-        return make_response(open('url_short/templates/index.html').read()) # TODO: change to send_file
+        return send_file('templates/index.html')
 
 def shorten(long_url, n=3):
     short_id = ""
