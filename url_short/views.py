@@ -29,7 +29,7 @@ def redirect_to_long_url(short_url):
 
 @app.route("/detail", methods = ['GET'])
 def detail_short_url():
-    short_url = request.args.get('url', None)
+    short_url = request.args.get('id', None)
     if r.hexists(short_url, long_url_field):
         long_url = r.hget(short_url, long_url_field)
         r.hincrby(short_url, visits_field, 1) # increment the number of visits to this url
@@ -37,6 +37,7 @@ def detail_short_url():
         return jsonify({
                 'success': True,
                 'long_url': long_url,
+                'id': short_url,
                 'short_url': request.host_url + short_url,
                 'visits': visits
         })
@@ -62,6 +63,7 @@ def shorten_url():
             return jsonify({
                     'success': True,
                     'long_url': long_url,
+                    'id': short_url,
                     'short_url': request.host_url + short_url,
                     'visits': visits
             })
@@ -77,6 +79,7 @@ def shorten_url():
             return jsonify({
                 'success': True,
                 'long_url': long_url,
+                'id': short_url,
                 'short_url': request.host_url + short_url,
                 'visits': 0
                 })

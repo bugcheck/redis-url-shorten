@@ -46,9 +46,10 @@ class UrlShortTestCase(TestCase):
 
         # try lengthening the same url again. You should get back the
         # original long url
-        response = self.app.get('/detail?url=%s' % short_url)
+        response = self.app.get('/detail?id=%s' % short_url)
         data = json.loads(response.data)
         self.assertEqual(data['short_url'], short_url_with_domain_name)
+        self.assertEqual(data['id'], short_url)
         self.assertTrue(data['success'])
         self.assertEqual(data['long_url'], long_url)
         self.assertEqual(int(data['visits']), 1)
