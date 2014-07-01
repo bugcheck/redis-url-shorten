@@ -21,7 +21,7 @@ class UrlShortTestCase(TestCase):
         self.assertTrue(data['success'])
         self.assertEqual(data['long_url'], long_url)
         self.assertEqual(int(data['visits']), 0)
-        self.assertEqual(len(data['short_url']), 3)
+        self.assertTrue(data['short_url'])
 
     def test_shorten_existing_url(self):
         long_url = 'test'
@@ -42,6 +42,7 @@ class UrlShortTestCase(TestCase):
         response = self.app.get('/shorten?url=%s' % long_url)
         data = json.loads(response.data)
         short_url = data['short_url']
+        short_url = short_url[short_url.rfind('/')+1:] # discard the domain name
 
         # try lengthening the same url again. You should get back the
         # original long url

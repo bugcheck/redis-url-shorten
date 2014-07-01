@@ -60,7 +60,7 @@ def shorten_url():
             return jsonify({
                 'success': True,
                 'long_url': long_url,
-                'short_url': short_url,
+                'short_url': request.host_url + short_url,
                 'visits': 0
                 })
     else: # useful if /shorten is called directly without a url arg
