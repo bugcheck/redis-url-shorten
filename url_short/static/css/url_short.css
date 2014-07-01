@@ -15,6 +15,10 @@ a {
     font-weight:bold;
 }
 
+a.unstyledlink {
+    text-decoration: none;
+}
+
 .logo {
     margin: 10px auto;
 }
@@ -148,7 +152,8 @@ button#copy_short_url{
 .error-block {
     width: 50%;
     margin: 0px auto;
-    color: #CA2E2E;
+    color: #EE6E6E;
+    font-weight: bold;
     text-align: center;
     line-height: 2.5;
     overflow: hidden;

@@ -34,6 +34,8 @@ angular
             function ($scope, $http, windowAlert) {
                 $scope.url_to_summarize = "";
                 $scope.result = {};
+
+                /* Use ZeroClipboard to copy the short url */
                 ZeroClipboard.config({swfPath: "/static/swf/ZeroClipboard.swf"});
                 $scope.copy_button = $("button#copy_short_url");
                 $scope.zero_client = new ZeroClipboard($scope.copy_button);
