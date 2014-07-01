@@ -37,7 +37,7 @@ def detail_short_url():
         return jsonify({
                 'success': True,
                 'long_url': long_url,
-                'short_url': short_url,
+                'short_url': request.host_url + short_url,
                 'visits': visits
         })
     else: # unknown short url
@@ -55,9 +55,9 @@ def shorten_url():
             return jsonify({
                     'success': True,
                     'long_url': long_url,
-                    'short_url': short_url,
+                    'short_url': request.host_url + short_url,
                     'visits': visits
-                })
+            })
         else: # this is a new long_url
             short_url = shorten(long_url)
             while r.hexists(short_url, long_url_field): # make sure this is a unique short url
