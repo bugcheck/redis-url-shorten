@@ -18,11 +18,12 @@ visits_field = 'visits'
 def basic_pages(**kwargs):
     return make_response(open('url_short/templates/index.html').read()) # TODO: change to send_file
 
-@app.route("/<short_id>", methods = ['GET'])
-def redirect_to_long_url(short_id):
-    if short_id == 'loaderio-02d26f053f6e8ac2e2313a6c1d6c706f.txt':
+@app.route("/loaderio-02d26f053f6e8ac2e2313a6c1d6c706f.txt", methods = ['GET'])
+def loaderio_verify():
         return send_file('static/test-verify/loaderio-02d26f053f6e8ac2e2313a6c1d6c706f.txt')
 
+@app.route("/<short_id>", methods = ['GET'])
+def redirect_to_long_url(short_id):
     if r.hexists(short_id, long_url_field):
         long_url = r.hget(short_id, long_url_field)
         r.hincrby(short_id, visits_field, 1) # increment the number of visits to this url
