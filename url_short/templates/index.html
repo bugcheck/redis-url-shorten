@@ -38,7 +38,6 @@
                             ng-required="true"
                             name="url"
                             watch-url
-                            ng-change="update_length()"
                             class="url_to_shorten long-field"/>
                         <input
                             type="submit"
@@ -52,7 +51,8 @@
             <p ng-show="form.$invalid &amp;&amp; form.url.$dirty &amp;&amp; valid_input_length" class="error-block">Your URL must start with "http://"</p>
         </div>
         <div ng-show="shortenerror" class="error-block">
-            <p>{{shortenerror}}</p>
+            <p>{{shortenerror.result}}<br>
+            {{shortenerror.cause}}</p>
         </div>
         <div class="result" ng-hide="shortenerror" ng-show="result.short_url">
             <div class="shorturl" ng-show="result.short_url">

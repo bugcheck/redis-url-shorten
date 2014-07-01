@@ -42,13 +42,20 @@ def detail_short_url():
         })
     else: # unknown short url
         return jsonify({
-                'success': False
+                'success': False,
+                'error': 'Unknown short URL'
         })
 
 @app.route("/shorten", methods = ['GET'])
 def shorten_url():
     long_url = request.args.get('url', None)
     if long_url:
+        if long_url.startswith(request.host_url):
+            return jsonify({
+                    'success': False,
+                    'error': 'Already a short URL.'
+            })
+
         if r.exists(long_url): # we've seen this long_url before
             short_url = r.get(long_url)
             visits = r.hget(short_url,visits_field)
