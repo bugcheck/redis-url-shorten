@@ -8,7 +8,6 @@ import redis
 from random import randint
 
 r = redis.from_url(app.config['REDIS_URL'])
-r = redis.from_url('redis://localhost:6379')
 
 valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 long_url_field = 'long_url'
