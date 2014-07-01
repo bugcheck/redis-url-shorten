@@ -1,7 +1,7 @@
 import env
 from unittest import TestCase, main
 from os import path
-import url_short.views
+import url_short.views as v
 from url_short import app
 import json
 import redis
@@ -10,7 +10,8 @@ TESTDIR = path.dirname(path.realpath(__file__))
 
 class UrlShortTestCase(TestCase):
     def setUp(self):
-        redis.from_url(app.config['REDISTOGO_URL']).flushall() # clean up old test results
+        v.r = redis.from_url('redis://localhost:6379/') # use a local redis-server for testing
+        v.r.flushall() # clean up old test results
         self.app = app.test_client()
 
     def test_shorten_new_url(self):
