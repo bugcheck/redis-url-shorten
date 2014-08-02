@@ -3,7 +3,7 @@ Mijikai - A high-performance Redis-backed URL shortener with API endpoints
 
 [Demo](http://mijikai.herokuapp.com)
 
-[![Build Status](https://travis-ci.org/neeraj2608/redis-url-shorten.svg?branch=master)](https://travis-ci.org/neeraj2608/redis-url-shorten)
+[![Build Status](https://travis-ci.org/neerajrao/redis-url-shorten.svg?branch=master)](https://travis-ci.org/neerajrao/redis-url-shorten)
 
 ### Features
 
